@@ -1,6 +1,5 @@
 import 'package:crowdilm/models/aya.dart';
 import 'package:crowdilm/models/quran_line.dart';
-import 'package:crowdilm/models/setting.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:path_provider/path_provider.dart';
 import '../models/line.dart';
@@ -86,7 +85,7 @@ class CrowdilmDatabase {
   }
 
   List<Quran> getQurans() {
-    var resultSet = database!.select('select * from quran');
+    var resultSet = database!.select('select * from quran order by quran_type, language, name;');
     List<Quran> qurans = [];
     for (var result in resultSet) {
       qurans.add(Quran(result['id'], result['language'], result['name'], result['name_english'], result['quran_type']));
@@ -182,11 +181,11 @@ order by quran_line.line_id
     return suras;
   }
 
-  List<Setting> getSettings() {
+  Map<String, String> getSettings() {
     var resultSet = database!.select('select * from setting');
-    List<Setting> settings = [];
+    Map<String, String> settings = {};
     for (var result in resultSet) {
-      settings.add(Setting(result['key'], result['value']));
+      settings[result['key']] = result['value'];
     }
     return settings;
   }

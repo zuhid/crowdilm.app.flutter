@@ -3,7 +3,6 @@ import '../db/crowdilm_database.dart';
 import '../models/aya.dart';
 import '../models/line.dart';
 import '../models/quran.dart';
-import '../models/setting.dart';
 import '../models/sura.dart';
 import '../models/quran_line.dart';
 
@@ -55,6 +54,10 @@ class CrowdilmController {
       database.addSuras(list);
     }
     return list;
+  }
+
+  Map<String, String> getSettings() {
+    return database.getSettings();
   }
 
   void saveSettings(Map<String, String> settings) {
