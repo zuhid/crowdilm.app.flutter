@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:crowdilm/controls/my_button.dart';
 import 'package:crowdilm/controls/my_dropdown.dart';
 import 'package:crowdilm/controls/my_dropdown_item.dart';
 import 'package:flutter/material.dart';
@@ -88,8 +87,9 @@ class _SettingPageState extends State<SettingPage> {
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            IconButton(icon: Icon(Icons.cancel), onPressed: () => context.go('/quran')),
             IconButton(
               icon: Icon(Icons.save, color: Colors.white, size: 24.0, semanticLabel: 'Settings'),
               onPressed: () async {

@@ -1,4 +1,3 @@
-import 'package:crowdilm/extensions/string_extension.dart';
 import 'package:flutter/services.dart';
 import 'package:html/parser.dart';
 import 'package:crowdilm/main.dart';
@@ -51,7 +50,7 @@ class _QuranPageState extends State<QuranPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(''),
+              IconButton(icon: Icon(Icons.menu, color: Colors.white, size: 24.0, semanticLabel: 'Menu'), onPressed: () => context.go('/setting')),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
