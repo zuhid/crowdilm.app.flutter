@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:crowdilm/controls/my_dropdown.dart';
 import 'package:crowdilm/controls/my_dropdown_item.dart';
+import 'package:crowdilm/models/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../main.dart';
@@ -38,19 +39,20 @@ class _SettingPageState extends State<SettingPage> {
 
   @override
   Widget build(BuildContext context) {
+    var settings = Settings(_settings);
     return Scaffold(
       appBar: AppBar(
         title: Text("Setting"),
-        titleTextStyle: TextStyle(color: Colors.white),
+        titleTextStyle: TextStyle(color: settings.fontColor),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+        backgroundColor: settings.backgroundColor,
       ),
-      backgroundColor: const Color.fromARGB(255, 24, 24, 24),
+      backgroundColor: settings.backgroundColor,
       body: Column(children: [
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: settings.offsetBackgroundColor,
             ),
             child: Column(
               children: [
@@ -91,7 +93,7 @@ class _SettingPageState extends State<SettingPage> {
           children: [
             IconButton(icon: Icon(Icons.cancel), onPressed: () => context.go('/quran')),
             IconButton(
-              icon: Icon(Icons.save, color: Colors.white, size: 24.0, semanticLabel: 'Settings'),
+              icon: Icon(Icons.save, color: settings.fontColor, size: 24.0, semanticLabel: 'Settings'),
               onPressed: () async {
                 crowdilmController.saveSettings(_settings);
                 await crowdilmController.getQuranLines(_settings["quran1"]!);

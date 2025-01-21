@@ -4,4 +4,8 @@ create table if not exists setting(
   , primary key(key)
 );
 insert or ignore into setting(key, value) values 
-('paging','page');
+  ('paging','page')
+, ('fontColor','255,255,255,255')
+, ('backgroundColor','255, 24, 24, 24')
+, ('offsetBackgroundColor','255, 0, 0, 0')
+;
